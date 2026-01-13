@@ -13,3 +13,9 @@ Create a new environment
 conda create -p venv python==3.7 -y
 
 ```
+Live Deployment on Render 
+
+🔗 **Try the app here:** [My Render App](https://diabetes-prediction-gce6.onrender.com
+)
+
+
