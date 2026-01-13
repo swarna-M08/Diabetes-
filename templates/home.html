@@ -1,1 +1,135 @@
-<h1>Helllo World</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Diabetes Prediction</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Segoe UI", sans-serif;
+            background: linear-gradient(135deg, #e0e7ff, #fdf2f8);
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 20px auto;
+            background: #ffffff;
+            padding: 20px 25px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 22px;
+            color: #1e293b;
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-size: 13px;
+            color: #334155;
+            margin-top: 8px;
+            display: block;
+        }
+
+        input {
+            width: 100%;
+            padding: 7px 9px;
+            font-size: 13px;
+            margin-top: 4px;
+            border-radius: 6px;
+            border: 1px solid #cbd5e1;
+            background: #f8fafc;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #6366f1;
+            background: #ffffff;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 15px;
+            padding: 10px;
+            font-size: 15px;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        .result {
+            margin-top: 15px;
+            padding: 12px;
+            background: #eef2ff;
+            border-left: 4px solid #6366f1;
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .result h3 {
+            margin: 0;
+            font-size: 15px;
+            color: #1e3a8a;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Diabetes Progression Prediction</h1>
+
+    <form action="{{ url_for('predict') }}" method="post">
+
+        <label>Age</label>
+        <input type="number" step="any" name="age" placeholder="age" required>
+
+        <label>Sex</label>
+        <input type="number" step="any" name="sex" placeholder="sex" required>
+
+        <label>Body Mass Index (BMI)</label>
+        <input type="number" step="any" name="bmi" placeholder="bmi" required>
+
+        <label>Average Blood Pressure (BP)</label>
+        <input type="number" step="any" name="bp" placeholder="bp" required>
+
+        <label>Total Serum Cholesterol (TC)</label>
+        <input type="number" step="any" name="s1" placeholder="s1 (tc)" required>
+
+        <label>Low-density Lipoproteins (LDL)</label>
+        <input type="number" step="any" name="s2" placeholder="s2 (ldl)" required>
+
+        <label>High-density Lipoproteins (HDL)</label>
+        <input type="number" step="any" name="s3" placeholder="s3 (hdl)" required>
+
+        <label>Total Cholesterol / HDL (TCH)</label>
+        <input type="number" step="any" name="s4" placeholder="s4 (tch)" required>
+
+        <label>Log of Serum Triglycerides (LTG)</label>
+        <input type="number" step="any" name="s5" placeholder="s5 (ltg)" required>
+
+        <label>Blood Sugar Level (GLU)</label>
+        <input type="number" step="any" name="s6" placeholder="s6 (glu)" required>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction_text %}
+    <div class="result">
+        <h3>{{ prediction_text }}</h3>
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
